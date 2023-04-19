@@ -6,5 +6,6 @@ async def set_default_commands(dp):
             types.BotCommand("start", "Запустить бота"),
             types.BotCommand("help", "Вывести справку"),
             types.BotCommand("audio", "Скачать видео из ютуба и переести в аудио")
+            types.BotCommand("vk", "Скачать из вк")
         ]
     )

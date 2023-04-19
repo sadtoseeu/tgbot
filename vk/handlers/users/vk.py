@@ -28,30 +28,4 @@ async def start_dow(message: types.Message):
 @dp.message_handler(state=Dowload.dowload)
 async def dowload(message: types.Message, state: FSMContext):
 
-    title = dowload_video(message.text)
-    audio = open(f'audio/{title}', 'rb')
-    
-    shutil.copyfile(f'audio/{title}', f'audio/1.mp3')
-    audio = open(f'audio/1.mp3', 'rb')
-
-    try:
-        await bot.send_audio(message.chat.id, audio)
-    except:
-        await message.answer()
-
-    for item in os.listdir("audio/"):
-        if item.endswith(".mp3"):
-            os.remove(os.path.join("audio/", item))
-
-    await state.finish()
-    
-    
-
-
-vk_session = vk_api.VkApi(login=login, password=password)
-vk_session.auth()
-vk = vk_session.get_api()  # Теперь можно обращаться к методам API как к обычным 
-                                        # классам
-vk_audio = audio.VkAudio(vk_session)  # Получаем доступ к audio
-
 #https://github.com/imartemy1524/vk_audio
